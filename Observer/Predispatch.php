@@ -53,7 +53,6 @@ class Predispatch implements ObserverInterface {
                 continue;
             }
 
-            $configProduct = $this->_productRepository->getById($configProductId[0], false, $this->_storeManager->getStore()->getId());
             $configType = $configProduct->getTypeInstance();
             $attributes = $configType->getConfigurableAttributesAsArray($configProduct);
 
