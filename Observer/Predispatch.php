@@ -44,9 +44,15 @@ class Predispatch implements ObserverInterface {
             return;
         }
 
-        $configProductId = $this->_productTypeConfigurable->getParentIdsByChild($simpleProductId);
+        $configProductIds = $this->_productTypeConfigurable->getParentIdsByChild($simpleProductId);
 
-        if (isset($configProductId[0])) {
+        foreach ($configProductIds as $configProductId) {
+            try {
+                $configProduct = $this->_productRepository->getById($configProductId, false, $this->_storeManager->getStore()->getId());
+            } catch (NoSuchEntityException $e) {
+                continue;
+            }
+
             $configProduct = $this->_productRepository->getById($configProductId[0], false, $this->_storeManager->getStore()->getId());
             $configType = $configProduct->getTypeInstance();
             $attributes = $configType->getConfigurableAttributesAsArray($configProduct);
