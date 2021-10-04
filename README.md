@@ -1,3 +1,5 @@
+# THIS EXTENSION IS NO LONGER ACTIVELY MAINTAINED. IF IT DOESN'T WORK WITH YOUR MAGENTO 2 INSTANCE, PLEASE FORK IT AND FIX IT -- AND FEEL FREE TO SUBMIT A PR.
+
 # [MAGENTO 2] Redirect a Simple Product to its Configurable Parent
 
 ![This extension is tested with Magento 2.3.5-p1](https://img.shields.io/badge/tested%20with-m2.3.5--p1-0daadb)
