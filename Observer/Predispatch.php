@@ -64,7 +64,11 @@ class Predispatch implements ObserverInterface {
             }
 
             // Pass on any query parameters to the configurable product's URL.
-            $query = $request->getQuery() ? '?' . http_build_query($request->getQuery()) : '';
+            $query = $request->getQuery();
+            if (is_object($query)) {
+                $query = $query->toArray();
+            }
+            $query = $query ? '?' . http_build_query($query) : '';
 
             // Generate hash for selected product options.
             $hash = $options ? '#' . http_build_query($options) : '';
